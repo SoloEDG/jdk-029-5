@@ -4,6 +4,7 @@ import { songs, SongCatalog, SongHeading, TransportBar } from '../features/playb
 import { LyricStage, PhraseList } from '../features/lyrics'
 import { RecordControls } from '../features/capture'
 import { PitchPanel } from '../features/pitch'
+import { BreathPanel } from '../features/breath'
 import { ReviewPanel } from '../features/review'
 import { useWorkspace } from './useWorkspace'
 
@@ -39,6 +40,8 @@ const {
         @seek="seek" @volume="transport.setVolume" />
       <RecordControls :status="capture.status.value" :issue="capture.issue.value" :level="capture.level.value"
         :selected="lyrics.selected.value" @toggle="toggleRecording" />
+      <BreathPanel :takes="review.visible.value" :line="lyrics.selected.value"
+        :notes="transport.song.value.notes" :position="graphPosition" />
     </div>
     <aside class="right-rail">
       <ReviewPanel :takes="review.visible.value" :slots="review.slots.value" :active-id="review.playingId.value"
